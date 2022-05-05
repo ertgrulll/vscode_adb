@@ -1,22 +1,39 @@
 {
   "name": "android-debug-bridge",
-  "displayName": "android debug bridge",
-  "description": "connects android devices wirelessly to debugging an app",
+  "displayName": "Android Debug Bridge",
+  "description": "Connects android devices wirelessly to debugging an app",
   "version": "0.0.1",
+  "publisher": "sourcekod",
+  "author": {
+    "name": "Ertuğrul Yakın",
+    "email": "ertgrulll@outlook.com",
+    "url": "https://sourcekod.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ertgrulll/vscode_adb"
+  },
+  "bugs": {
+    "url": "https://github.com/ertgrulll/vscode_adb/issues",
+    "email": "ertgrulll@outlook.com"
+  },
+  "homepage": "https://github.com/ertgrulll/vscode_adb",
   "engines": {
     "vscode": "^1.66.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Debuggers"
+  ],
+  "keywords": [
+    "android",
+    "debug",
+    "adb",
+    "wireless",
+    "wifi"
   ],
   "activationEvents": [
-    "onCommand:android-debug-bridge.connect",
-    "onCommand:android-debug-bridge.devices",
-    "onCommand:android-debug-bridge.setDefaultDevice",
-    "onCommand:android-debug-bridge.restart",
-    "onCommand:android-debug-bridge.usb",
-    "onCommand:android-debug-bridge.setPort",
-    "onCommand:android-debug-bridge.fastConnect"
+    "onStartupFinished"
   ],
   "main": "./extension.js",
   "contributes": {
