@@ -42,9 +42,14 @@ const getDeviceIp = async (serial) => {
     return serial.split(":")[0];
   }
 
-  const wifiInterface = (
-    await exec(`adb -s ${serial} shell getprop | grep wifi.interface`)
-  ).stdout
+  const networkInterface = (await exec(`adb -s ${serial} shell getprop`))
+    .stdout;
+
+  const wifiInterfaceLine = networkInterface
+    .split("\n")
+    .filter((line) => line.includes("wifi.interface"))[0];
+
+  const wifiInterface = wifiInterfaceLine
     .split(":")[1]
     .trim()
     .replace("[", "")

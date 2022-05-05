@@ -7,7 +7,7 @@ const functions = require("./functions");
  */
 async function activate(context) {
   const store = context.globalState;
-  store.update("default_device", undefined);
+
   let defaultDevice = store.get("default_device");
   let defaultPort = store.get("port");
 

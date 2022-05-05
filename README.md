@@ -30,7 +30,7 @@
 ## Getting Started
 To use adb, you must enable **USB debugging** in the device system settings, under **Developer options**.
 
-> To prepare your device, refer this official ADB [instructions](https://developer.android.com/studio/command-line/adb?authuser=1#wireless)
+> To prepare your device, refer this official ADB [instructions](https://developer.android.com/studio/command-line/adb?authuser=1#Enabling)
 
 ## Usage
 Press `ctrl + shift + p`  for Windows/Linux, `command + shift + p` on MacOs and type adb to see all available commands. 
