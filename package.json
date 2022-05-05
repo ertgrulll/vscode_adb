@@ -33,7 +33,14 @@
     "wifi"
   ],
   "activationEvents": [
-    "onStartupFinished"
+    "onStartupFinished",
+    "onCommand:android-debug-bridge.fastConnect",
+    "onCommand:android-debug-bridge.connect",
+    "onCommand:android-debug-bridge.devices",
+    "onCommand:android-debug-bridge.setDefaultDevice",
+    "onCommand:android-debug-bridge.restart",
+    "onCommand:android-debug-bridge.usb",
+    "onCommand:android-debug-bridge.setPort"
   ],
   "main": "./extension.js",
   "contributes": {

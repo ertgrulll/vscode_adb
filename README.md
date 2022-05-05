@@ -28,6 +28,8 @@
 </details>
 
 ## Getting Started
+Install extension from [here](https://marketplace.visualstudio.com/items?itemName=sourcekod.android-debug-bridge) or from Visual Studio Code marketplace.
+
 To use adb, you must enable **USB debugging** in the device system settings, under **Developer options**.
 
 > To prepare your device, refer this official ADB [instructions](https://developer.android.com/studio/command-line/adb?authuser=1#Enabling)

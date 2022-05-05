@@ -5,3 +5,6 @@
 
 ## [0.0.2]
 - Grep command fix for Windows users
+
+## [0.0.3]
+- Activation fix
