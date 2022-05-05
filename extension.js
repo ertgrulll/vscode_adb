@@ -29,17 +29,16 @@ async function activate(context) {
         }
 
         const devices = await functions.getDevices();
+        const offlineDevice = devices.devices.filter(
+          (device) => device.serial === `${defaultDevice.ip}:${defaultPort}`
+        )[0];
 
-        if (
-          devices.devices.some(
-            (device) => device.serial === defaultDevice.serial
-          )
-        ) {
-          await functions.tcpip(defaultPort, defaultDevice.serial);
-        } else {
-          await functions.tcpip(defaultPort, defaultDevice.serial);
-          await functions.connect(defaultDevice.ip, defaultPort);
-        }
+        await functions.tcpip(
+          defaultPort,
+          offlineDevice ? defaultDevice.serial : null
+        );
+
+        await functions.connect(defaultDevice.ip, defaultPort);
 
         vscode.window.showInformationMessage(
           `Connected to ${defaultDevice.ip}:${defaultPort}`

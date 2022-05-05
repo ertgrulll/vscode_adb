@@ -22,9 +22,11 @@ const getDevices = async () => {
         .replace("model:", "")
         .replace(/_/g, " ");
 
+      const connectionType = props[0].includes(":") ? " (wireless)" : " (usb)";
+      const status = props[1] === "offline" ? " - (offline)" : "";
+
       return {
-        description:
-          props[0] + (props[0].includes(":") ? " (wireless)" : " (usb)"),
+        description: props[0] + connectionType + status,
         label: model,
         serial: props[0],
         isOffline: props[1] === "offline",
@@ -68,12 +70,7 @@ const getDeviceIp = async (serial) => {
 const connect = async (ip, port) => {
   const { stdout, stderr } = await exec(`adb connect ${ip}:${port}`);
 
-  if (
-    stdout.includes("no host") ||
-    stdout.includes("already") ||
-    stdout.includes("failed") ||
-    stderr
-  ) {
+  if (stdout.includes("no host") || stdout.includes("failed") || stderr) {
     throw new Error(stdout || stderr);
   }
 };
@@ -106,7 +103,8 @@ const usb = async (serial) => {
 };
 
 const tcpip = async (port, serial) => {
-  await exec(`adb -s ${serial} tcpip ${port}`);
+  const serialPart = serial ? ` -s ${serial}` : "";
+  await exec(`adb ${serialPart} tcpip ${port}`);
 };
 
 module.exports = {

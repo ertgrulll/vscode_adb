@@ -8,3 +8,7 @@
 
 ## [0.0.3]
 - Activation fix
+
+## [0.0.4]
+- Fast connect fix
+- Readme updates

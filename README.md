@@ -51,6 +51,10 @@ Connects Android device that selected between available devices.
 `ADB: Fast connect`
 Connects default Android device directly if set before, otherwise shows device options to select a default device.
 
+> Setting a static ip from device wi-fi settings is recommended before setting default device.
+> This command will not work if you used the "usb" command or restarted the device.
+> No need to connect device via usb to fast connect.
+
 ### Set Default Device
 `ADB: Set up a device to connect fast next time`
 Changes default device to fast connect.
