@@ -12,3 +12,6 @@
 ## [0.0.4]
 - Fast connect fix
 - Readme updates
+
+## [0.0.5]
+- Removed connected devices from connection/default device selection

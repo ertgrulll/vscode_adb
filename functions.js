@@ -1,7 +1,7 @@
 const util = require("util");
 const exec = util.promisify(require("child_process").exec);
 
-const getDevices = async () => {
+const getDevices = async (excludeWirelessDevices) => {
   const { stdout, stderr } = await exec("adb devices -l");
 
   if (stderr) {
@@ -11,27 +11,32 @@ const getDevices = async () => {
 
   const lines = stdout.split("\n");
 
-  const deviceList = lines
+  let deviceLines = lines
     .slice(1, lines.length - 1)
-    .filter((line) => line.includes("device"))
-    .map((line) => {
-      const props = line.split(/\s+/g);
+    .filter((line) => line.includes("device"));
 
-      const model = props
-        .filter((item) => item.includes("model"))[0]
-        .replace("model:", "")
-        .replace(/_/g, " ");
+  if (excludeWirelessDevices) {
+    deviceLines = deviceLines.filter((line) => !line.includes(":"));
+  }
 
-      const connectionType = props[0].includes(":") ? " (wireless)" : " (usb)";
-      const status = props[1] === "offline" ? " - (offline)" : "";
+  let deviceList = deviceLines.map((line) => {
+    const props = line.split(/\s+/g);
 
-      return {
-        description: props[0] + connectionType + status,
-        label: model,
-        serial: props[0],
-        isOffline: props[1] === "offline",
-      };
-    });
+    const model = props
+      .filter((item) => item.includes("model"))[0]
+      .replace("model:", "")
+      .replace(/_/g, " ");
+
+    const connectionType = props[0].includes(":") ? " (wireless)" : " (usb)";
+    const status = props[1] === "offline" ? " - (offline)" : "";
+
+    return {
+      description: props[0] + connectionType + status,
+      label: model,
+      serial: props[0],
+      isOffline: props[1] === "offline",
+    };
+  });
 
   return {
     title: lines[0],

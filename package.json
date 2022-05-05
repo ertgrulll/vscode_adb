@@ -2,7 +2,7 @@
   "name": "android-debug-bridge",
   "displayName": "Android Debug Bridge",
   "description": "Connects android devices wirelessly to debugging an app",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "sourcekod",
   "author": {
     "name": "Ertuğrul Yakın",

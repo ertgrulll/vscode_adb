@@ -88,7 +88,8 @@ async function activate(context) {
     "android-debug-bridge.setDefaultDevice",
     async () => {
       const device = await commands.showDeviceList(
-        "Select device to set as default"
+        "Select device to set as default",
+        true
       );
 
       if (!device) return;

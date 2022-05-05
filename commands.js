@@ -10,14 +10,12 @@ const establishConnection = async (port) => {
         cancellable: false,
       },
       async (progress) => {
-        progress.report({ message: "Disconnecting from connected device..." });
-        await functions.disconnect();
-
         progress.report({ message: "Waiting device selection..." });
-        const result = await showDeviceList("Select device to connect");
+        const result = await showDeviceList("Select device to connect", true);
 
         if (!result) return;
 
+        await functions.disconnect();
         progress.report({ message: "Connecting to device..." });
         const deviceIp = await functions.getDeviceIp(result.serial);
 
@@ -40,9 +38,11 @@ const establishConnection = async (port) => {
  * @param {string} placeHolder
  * @returns Selected device details
  */
-const showDeviceList = async (placeHolder) => {
+const showDeviceList = async (placeHolder, excludeWirelessDevices) => {
   try {
-    const { title, devices } = await functions.getDevices();
+    const { title, devices } = await functions.getDevices(
+      excludeWirelessDevices
+    );
 
     if (devices.length == 0) {
       vscode.window.showInformationMessage(
