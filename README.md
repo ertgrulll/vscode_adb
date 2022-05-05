@@ -1,65 +1,94 @@
-# android-debug-bridge README
+<div  id="top"></div>
+ <br  />
+<div  align="center">
+	<h3  align="center">Android Debug Bridge</h3>
+	<p  align="center">
+		Brings ADB functionality to Visual Studio Code.
+	</p>
+</div>
 
-This is the README for your extension "android-debug-bridge". After writing up a brief description, we recommend including the following sections.
+<!-- TABLE OF CONTENTS -->
+<details>
+	<summary>Table of Contents</summary>
+	<ol>
+		<li><a  href="#getting-started">Getting Started</a></li>
+		<li><a  href="#usage">Usage</a></li>
+		<ul>
+			<li><a  href="#show-devices">Show Devices</a></li>
+			<li><a  href="#connect">Connect</a></li>
+			<li><a  href="#fast-connect">Fast Connect</a></li>
+     		<li><a  href="#set-default-device">Set Default Device</a></li>
+			<li><a  href="#restart-server">Restart Server</a></li>
+			<li><a  href="#usb-mode">USB Mode</a></li>
+			<li><a  href="#set-default-port">Set Default Port</a></li>
+	    </ul>
+		<li><a  href="#contributing">Contributing</a></li>
+		<li><a  href="#license">License</a></li>
+	</ol>
+</details>
 
-## Features
+## Getting Started
+To use adb, you must enable **USB debugging** in the device system settings, under **Developer options**.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+> To prepare your device, refer this official ADB [instructions](https://developer.android.com/studio/command-line/adb?authuser=1#wireless)
 
-For example if there is an image subfolder under your extension project workspace:
+## Usage
+Press `ctrl + shift + p`  for Windows/Linux, `command + shift + p` on MacOs and type adb to see all available commands. 
 
-\!\[feature X\]\(images/feature-x.png\)
+### Show Devices
+`ADB: Show devices`
+Shows all available devices to debugging an Android app. Devices might connected via usb or wireless.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### Connect
+`ADB: Connect`
+Connects Android device that selected between available devices. 
 
-## Requirements
+<p  align="right">(<a  href="#top">back to top</a>)</p>
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### Fast Connect
+`ADB: Fast connect`
+Connects default Android device directly if set before, otherwise shows device options to select a default device.
 
-## Extension Settings
+### Set Default Device
+`ADB: Set up a device to connect fast next time`
+Changes default device to fast connect.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### Restart Server
+`ADB: Restart server`
+Kills and starts the adb server. This will cause termination on any running debug process.
 
-For example:
+<p  align="right">(<a  href="#top">back to top</a>)</p>
 
-This extension contributes the following settings:
+### Usb Mode
+`ADB: Restart server in usb mode`
+Restarts adb server in usb mode for all tcpip devices.
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+### Set Default Port
+`ADB: Set default port`
+The default port is 5555, it sets the default port for new connections. The change takes effect on the next connection.
 
-## Known Issues
+<p  align="right">(<a  href="#top">back to top</a>)</p>
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## Contributing
 
-## Release Notes
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Users appreciate release notes as you update your extension.
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 
-### 1.0.0
+Don't forget to give the project a star! Thanks again!  
 
-Initial release of ...
+[Repository](https://github.com/ertgrulll/vscode_adb)
 
-### 1.0.1
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-Fixed issue #.
+Ertuğrul Yakın - ertgrulll@outlook.com
 
-### 1.1.0
+## License
 
-Added features X, Y, and Z.
+Distributed under the MIT License.
 
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+<p  align="right">(<a  href="#top">back to top</a>)</p>
