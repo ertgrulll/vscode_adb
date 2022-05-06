@@ -15,3 +15,6 @@
 
 ## [0.0.5]
 - Removed connected devices from connection/default device selection
+
+## [0.0.6]
+- No device error fixed

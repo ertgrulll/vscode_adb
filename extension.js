@@ -29,14 +29,14 @@ async function activate(context) {
         }
 
         const devices = await functions.getDevices();
-        const offlineDevice = devices.devices.filter(
-          (device) => device.serial === `${defaultDevice.ip}:${defaultPort}`
-        )[0];
 
-        await functions.tcpip(
-          defaultPort,
-          offlineDevice ? defaultDevice.serial : null
-        );
+        for (let i = 0; i < devices.devices.length; i++) {
+          const device = devices.devices[i];
+
+          if (device.isOffline) continue;
+
+          await functions.tcpip(defaultPort, device.serial);
+        }
 
         await functions.connect(defaultDevice.ip, defaultPort);
 

@@ -15,10 +15,6 @@ const getDevices = async (excludeWirelessDevices) => {
     .slice(1, lines.length - 1)
     .filter((line) => line.includes("device"));
 
-  if (excludeWirelessDevices) {
-    deviceLines = deviceLines.filter((line) => !line.includes(":"));
-  }
-
   let deviceList = deviceLines.map((line) => {
     const props = line.split(/\s+/g);
 
@@ -37,6 +33,10 @@ const getDevices = async (excludeWirelessDevices) => {
       isOffline: props[1] === "offline",
     };
   });
+
+  if (excludeWirelessDevices) {
+    deviceList = deviceList.filter((device) => !device.serial.includes(":"));
+  }
 
   return {
     title: lines[0],
@@ -74,6 +74,8 @@ const getDeviceIp = async (serial) => {
 
 const connect = async (ip, port) => {
   const { stdout, stderr } = await exec(`adb connect ${ip}:${port}`);
+
+  console.log(stdout);
 
   if (stdout.includes("no host") || stdout.includes("failed") || stderr) {
     throw new Error(stdout || stderr);
